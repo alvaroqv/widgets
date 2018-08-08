@@ -37,5 +37,7 @@ Into the widget folder type:
 
 ## Steps inside the project
 - Acess the http://localhost:8081
-
-
+- Link to the Upload Form: <a href="upload"> click here</a>
+- Link to list of uploaded Files: <a href="json"> click here</a>
+- Link to list of processing Files table: <a href="json/processing"> click here
+- Link to list of processed Files table: <a href="json/processed"> click here</a>

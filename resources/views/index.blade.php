@@ -22,6 +22,15 @@ Link to list of processing Files table: <a href="json/processing"> click here</a
 <br>
 Link to list of processed Files table: <a href="json/processed"> click here</a>
 <br>
+<br>
+Link to the Upload Form: <a href="upload"> click here</a>
+<br>
+Link to list of uploaded Files: <a href="json"> click here</a>
+<br>
+Link to list of processing Files table: <a href="json/processing"> click here</a>
+<br>
+Link to list of processed Files table: <a href="json/processed"> click here</a>
+<br>
 
 
 
