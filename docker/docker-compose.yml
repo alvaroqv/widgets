@@ -1,0 +1,29 @@
+web:
+    image: hitalos/laravel:latest
+    container_name: web_php_widgets
+    ports:
+        - 8081:80
+    volumes:
+        - /Volumes/MacintoshHD/desenvolvimento/nova_arquitetura/laravel/teste/testeapp/widgets_github/widgets:/var/www
+    links:
+        - db
+    #command: php -S 0.0.0.0:80 -t public public/index.php
+    environment:
+        DB_HOST: db
+        DB_DATABASE: widgets
+        DB_USERNAME: testuser
+        DB_PASSWORD: secret
+        DB_CONNECTION: mysql
+db:
+    image: mysql/mysql-server:5.7
+    container_name: mysql_widgets
+    #command: --innodb_use_native_aio=0
+    volumes:
+        # without DATA_SAVE_PATH
+        - /Volumes/MacintoshHD/desenvolvimento/nova_arquitetura/laravel/teste/testeapp/widgets_github/mysql:/var/lib/mysql
+    environment:
+        # with mysql
+        MYSQL_DATABASE: widgets
+        MYSQL_USER: testuser
+        MYSQL_PASSWORD: secret
+        MYSQL_ROOT_PASSWORD: root
