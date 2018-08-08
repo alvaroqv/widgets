@@ -1,40 +1,37 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Example project with Laravel 5.4 - PHP 7 and MySql
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+This project is a web project that uses Laravel 5.4 as a web framework. Its contains a example how to upload a Json File and process this file into Mysql Database and export the data to Excel table. 
 
-## About Laravel
+This web project has 4 pages:
+- Home Page: brief introduction about the project and explanation about the project structure
+- Upload Files - Form page that allows to upload files to the server
+- Process Files - Page with list table of uploaded files and with an option to select which file will process
+- Processing File - Page with a list of files that are processing
+- Processed Files - Page with a list of processed file with an option to export the data as Excel / PDF table.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+## Requirements
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Here the requirements to start the project
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+- Docker Compose - Docker version 18.06.0-ce, build 0ffa825
 
-## Learning Laravel
+## How to start
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+- git clone the project 
+- Edit the file docker-compose.yml inside the docker folder
+ -- Configure the Volume: 
+ --- inside the web container edit the <project-folder> with the current project example: /local/opt/project/widgtes
+ --- inside the db container edit the <mysql-folder> with the path to a folder to save the mysql data files: /local/opt/project/mysql
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+## Run the project
 
-## Contributing
+First start the containers - enter the docker folder and type: docker-compose up
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+## Configure the Laravel project
 
-## Security Vulnerabilities
+Into the widget folder type: 
+- docker exec -it web_php_widgets php artisan migrate (To create the tables)
+- docker exec -it web_php_widgets printf "upload_max_filesize=100M\n post_max_size = 100M" > php.ini
+- docker exec -it web_php_widgets php artisan queue:work --daemon (to start the queue service)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
