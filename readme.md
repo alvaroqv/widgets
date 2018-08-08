@@ -31,7 +31,11 @@ First start the containers - enter the docker folder and type: docker-compose up
 
 Into the widget folder type: 
 - docker exec -it web_php_widgets php artisan migrate (To create the tables)
-- docker exec -it web_php_widgets printf "upload_max_filesize=100M\n post_max_size = 100M" > php.ini
-- docker exec -it web_php_widgets php artisan queue:work --daemon (to start the queue service)
+- docker exec -it web_php_widgets sh -c "printf \"upload_max_filesize=100M\npost_max_size = 100M\" > /usr/local/etc/php/php.ini"
+(now it needs to stop the cotainer and start again to read the new php configuration - docker-compose stop then docker-compose up )
+- docker exec -it web_php_widgets php artisan queue:work --daemon (to start the queue service to process the files)
+
+## Steps inside the project
+- Acess the http://localhost:8081
 
 
