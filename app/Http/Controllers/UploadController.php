@@ -18,6 +18,12 @@ class UploadController extends Controller
      */
     public function uploadForm()
     {
+
+        $s = '06/10/2011 19:00:02';
+$date = strtotime($s);
+echo date('d/M/Y H:i:s', $date);
+
+
         return view('upload_form');
     }
 

@@ -19,7 +19,7 @@ Route::get('/index', function () {
     return view('index');
 });
 
-Route::get('/teste', 'PageController@index');
+Route::get('/test', 'PageController@index');
 
 Route::get('/upload', 'UploadController@uploadForm');
 Route::post('/upload', 'UploadController@uploadSubmit');
